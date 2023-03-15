@@ -18,8 +18,7 @@ const MAINNET_RPC_URL =
     "https://eth-mainnet.alchemyapi.io/v2/your-api-key"
 const POLYGON_MAINNET_RPC_URL =
     process.env.POLYGON_MAINNET_RPC_URL || "https://polygon-mainnet.alchemyapi.io/v2/your-api-key"
-const SEPOLIA_RPC_URL =
-    process.env.SEPOLIA_RPC_URL;
+const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL
 const MUMBAI_RPC_URL =
     process.env.MUMBAI_RPC_URL || "https://polygon-mumbai.g.alchemy.com/v2/your-api-key"
 const PRIVATE_KEY = process.env.PRIVATE_KEY
@@ -32,8 +31,16 @@ const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "Your etherscan API k
 const POLYGONSCAN_API_KEY = process.env.POLYGONSCAN_API_KEY || "Your polygonscan API key"
 const REPORT_GAS = process.env.REPORT_GAS || false
 
+// My stuff for Goerli deployment
+const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL
+
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
+    // namedAccounts: {
+    //     deployer: {
+    //         default: 0,
+    //     },
+    // },
     solidity: {
         compilers: [
             {
@@ -90,6 +97,12 @@ module.exports = {
             accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
             chainId: 80001,
         },
+        goerli: {
+            url: GOERLI_RPC_URL,
+            accounts: [PRIVATE_KEY],
+            chainId: 5,
+            saveDeployments: true,
+        },
     },
     defaultNetwork: "hardhat",
     etherscan: {
@@ -98,6 +111,7 @@ module.exports = {
             // npx hardhat verify --list-networks
             sepolia: ETHERSCAN_API_KEY,
             mainnet: ETHERSCAN_API_KEY,
+            goerli: ETHERSCAN_API_KEY,
             polygon: POLYGONSCAN_API_KEY,
             polygonMumbai: POLYGONSCAN_API_KEY,
         },

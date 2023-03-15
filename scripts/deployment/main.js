@@ -17,6 +17,7 @@ const {
 async function main() {
     await run("compile")
     const chainId = network.config.chainId
+    console.log(chainId.name)
     await deployApiConsumer(chainId)
     await deployAutomationCounter(chainId)
     await deployPriceConsumerV3(chainId)

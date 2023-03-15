@@ -58,6 +58,15 @@ const networkConfig = {
         fundAmount: "100000000000000000", // 0.1
         automationUpdateInterval: "30",
     },
+    5: {
+        name: "goerli",
+        // gasLane: "0x79d3d8832d904592c0bf9818b621522c988bb8b0c05cdc3b15aea1b6e8db0c15",
+        linkToken: "0x326C977E6efc84E512bB9C30f76E30c160eD06FB",
+        fundAmount: "0",
+        automationUpdateInterval: "30",
+        subscriptionId: "0",
+        jobId: "0xcc79157eb46f5624204f47ab42b3906caa40eab7", //found on https://docs.chain.link/any-api/testnet-oracles/#jobs
+    },
 }
 
 const developmentChains = ["hardhat", "localhost"]
